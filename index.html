@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#9370DB">
+    <meta name="mobile-web-app-capable" content="yes">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e6e6fa, #d8bfd8, #dda0dd);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(148, 112, 216, 0.3);
+            overflow: hidden;
+            position: relative;
+            padding: 40px;
+            margin: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        h1 {
+            color: #9370DB;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #e6e6fa, #9370DB, #e6e6fa);
+            border-radius: 2px;
+        }
+        
+        .letter-content {
+            background: linear-gradient(to bottom, #fafafa, #ffffff);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: inset 0 0 10px rgba(147, 112, 219, 0.1);
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            border: 1px solid #eee;
+        }
+        
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #9370DB;
+            font-weight: bold;
+        }
+        
+
+        
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(147, 112, 219, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            animation: slideIn 1s ease-out;
+            transition: transform 0.3s ease;
+        }
+        
+        .music-player:hover {
+            transform: translateY(-5px);
+        }
+        
+        .player-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .player-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #9370DB;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+        }
+        
+        .player-btn:hover {
+            background: #7B68EE;
+            transform: scale(1.1);
+        }
+        
+        .player-info {
+            color: #9370DB;
+            font-weight: 600;
+        }
+        
+        .decoration {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .decoration-1 {
+            top: 20px;
+            left: 20px;
+            font-size: 100px;
+            transform: rotate(-15deg);
+        }
+        
+        .decoration-2 {
+            bottom: 20px;
+            right: 20px;
+            font-size: 80px;
+            transform: rotate(20deg);
+        }
+        
+        .lavender-field {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://i.ibb.co/0sxSqVJ/lavender-border.png') repeat-x bottom;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            
+            .letter-content {
+                padding: 15px;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .signature {
+                font-size: 1.8rem;
+                margin-top: 20px;
+            }
+            
+            .music-player {
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                padding: 10px;
+            }
+            
+            .player-btn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .player-info {
+                font-size: 0.9rem;
+            }
+            
+            .decoration-1 {
+                font-size: 60px;
+            }
+            
+            .decoration-2 {
+                font-size: 50px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .letter-content {
+                font-size: 0.9rem;
+            }
+            
+            .player-info {
+                max-width: 120px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="decoration decoration-1">💜</div>
+        <div class="decoration decoration-2">🌸</div>
+        
+        <div class="header">
+            <h1>For You 🥰</h1>
+            <p class="floating" style="color: #9370DB; font-size: 1.2rem;">A letter from the heart</p>
+        </div>
+        
+        <div class="letter-content">
+            <p>Hey!</p>
+            
+            <p style="margin-top: 20px;">I think when you are reading this I am not longer here.</p>
+            
+            <p style="margin-top: 20px;">As you said of the exchange I thought to do this as a great gratitude for you.</p>
+            
+            <p style="margin-top: 20px;">See honestly I am very thankful to you for being here and spend time with us and me. I would never forget this memory. See as really you changed me from when you came. Changed a lot in everyway. I cant express.</p>
+            
+            <p style="margin-top: 20px;">Thanks! Thanks a lot, it is not expressable but still I am try to make you thank for the all golden memories. Yah maybe with me you dont have much to remember but I have, I have a lot to remember. So the least I can do is thank. All thank to you.</p>
+            
+            <p style="margin-top: 20px;">Also I want to apologise to you. Sorry! If I made any trouble ! And I think I have made so I really Sorry to you! Actually I am not so good, you said I am mature huh, if I accept it still I am a boring Guy not soo good at any angle! So sorry.</p>
+            
+            <p style="margin-top: 20px;">But yah you left a debt on me... the debt of all the golden memories! Dont ever think I will forget them! For real I have no close friends execpt which I told you. I am tellig you this alone han.. so I will never forget. Also you were telling me something - subah aapne kaha tha ki baad me bataungi - I am eager to know so please tell me ok also If you are COMFORTABLE so tell me in my insta id - blazing_hinokami  or  clone_velour</p>
+            
+            <div class="signature">
+                With all my love,<br>
+                Forever want you to here!
+            </div>
+        </div>
+        
+        <div class="gif-container">
+            <div class="gif-message">
+                Memories that will last forever 💜
+            </div>
+        </div>
+        
+        <div class="lavender-field"></div>
+    </div>
+    
+    <div class="music-player">
+        <div class="player-controls">
+            <button class="player-btn" id="playBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="player-btn" id="pauseBtn">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
+        <div class="player-info">
+            Meet you soon...
+        </div>
+    </div>
+    
+    <audio id="background-music" autoplay loop >
+        <source src="Somewhereonlyweknow.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-music');
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+
+            // Try to unmute and play after first user interaction for mobile compatibility
+            function enableAudio() {
+                audio.muted = false;
+                audio.play().catch(() => {});
+                document.removeEventListener('touchstart', enableAudio);
+                document.removeEventListener('click', enableAudio);
+            }
+            document.addEventListener('touchstart', enableAudio, { once: true });
+            document.addEventListener('click', enableAudio, { once: true });
+
+            // Start music automatically when page loads
+            setTimeout(() => {
+                audio.play().catch(e => console.log('Auto-play prevented:', e));
+            }, 1000);
+            
+            playBtn.addEventListener('click', () => {
+                audio.muted = false;
+                audio.play();
+            });
+            
+            pauseBtn.addEventListener('click', () => {
+                audio.pause();
+            });
+            
+            // Add floating animation to all paragraphs
+            const paragraphs = document.querySelectorAll('.letter-content p');
+            paragraphs.forEach((p, index) => {
+                p.style.animationDelay = `${index * 0.2}s`;
+                p.classList.add('floating');
+            });
+        });
+    </script>
+</body>
+</html>
